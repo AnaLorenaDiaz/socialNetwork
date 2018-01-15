@@ -49,9 +49,9 @@ $('#logIn').on('click', function(event) {
   var LogPassword = $('#LogPassword').val();
 
   firebase.auth().signInWithEmailAndPassword(logEmail, logPassword)
-  /* .then(function() {
-    window.location.href = '../views/profile.html';
-  }) */ 
+    .then(function() {
+      window.location.href = '../views/profile.html';
+    })
     .catch(function(error) {
       var errorCode = error.code;
       var errorMessage = error.message;
@@ -71,7 +71,6 @@ firebase.auth().onAuthStateChanged(function(user) {
     var isAnonymous = user.isAnonymous;
     var uid = user.uid;
     var providerData = user.providerData;
-    $(location).attr('href', '../views/profile.html');
   } else {
     console.log('no existe usuario activo');
   }
@@ -87,6 +86,7 @@ $('#log-facebook').on('click', function(event) {
     .then(function(result) {
       var token = result.credential.accessToken;
       var user = result.user;
+      window.location.href = '../views/profile.html';
     })
     .catch(function(error) {
       var errorCode = error.code;
@@ -103,6 +103,7 @@ $('#log-google').on('click', function(event) {
     .then(function(result) {
       var token = result.credential.accessToken;
       var user = result.user;
+      window.location.href = '../views/profile.html';
     }).catch(function(error) {
       var errorCode = error.code;
       var errorMessage = error.message;
